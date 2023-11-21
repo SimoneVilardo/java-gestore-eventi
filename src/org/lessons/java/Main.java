@@ -1,9 +1,12 @@
 package org.lessons.java;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import org.lessons.java.pojo.Concerto;
 import org.lessons.java.pojo.Evento;
 
 public class Main {
@@ -24,12 +27,33 @@ public class Main {
 		String strPostiTotali = in.nextLine();
 		int postiTotali = Integer.valueOf(strPostiTotali);
 		
+		System.out.println("Scegli il tipo di evento (Evento/Concerto): ");
+        String tipoEvento = in.nextLine().toLowerCase();
+		
 		
 		Evento evento = null;
 		
 		try {
 			
-			evento = new Evento(titolo, data, postiTotali);
+		  if (tipoEvento.equalsIgnoreCase("evento")) {
+                evento = new Evento(titolo, data, postiTotali);
+                
+            } else if (tipoEvento.equalsIgnoreCase("concerto")) {
+                System.out.print("Ora (formato HH:mm): ");
+                String oraString = in.nextLine();
+                LocalTime ora = LocalTime.parse(oraString, DateTimeFormatter.ofPattern("HH:mm"));
+
+                System.out.print("Prezzo: ");
+                String prezzoString = in.nextLine();
+                BigDecimal prezzo = new BigDecimal(prezzoString);
+
+                evento = new Concerto(titolo, data, postiTotali, ora, prezzo);
+                
+            } else {
+            	
+                System.out.println("Tipo di evento non valido.");
+                
+            }
 			
 			System.out.print("Vuoi effettuare delle prenotazioni? (si/no): ");
 			String risposta = in.nextLine();

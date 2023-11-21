@@ -90,7 +90,7 @@ public class Evento {
 	}
 	
 	
-	private String dataFormattata() {
+	protected String dataFormattata() {
 		
 		 String dataFormattata = getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		
