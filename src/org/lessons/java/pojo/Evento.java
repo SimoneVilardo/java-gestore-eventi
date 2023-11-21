@@ -100,6 +100,12 @@ public class Evento {
 	@Override
 	public String toString() {
 		
-		return dataFormattata() + " - " + getTitolo();
+		return dataFormattata() + " - " + getTitolo() + "\n"
+				+ "Posti Totali: " + getPostiTotale() + "\n"
+				+ "Numero di posti prenotati: " + getPostiPrenotati() + "\n"
+				+ "Numero di posti disponibili: " + (getPostiTotale() - getPostiPrenotati());
 	}
 }
+
+
+
