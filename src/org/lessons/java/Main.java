@@ -1,9 +1,51 @@
 package org.lessons.java;
 
+import java.time.LocalDate;
+
+import org.lessons.java.pojo.Evento;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		Evento ev = null;
+
+        try {
+
+            ev = new Evento("rave party", LocalDate.parse("2024-12-20"), 1);
+
+            System.out.println(ev);
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+
+        System.out.println(ev.getPostiPrenotati());
+
+
+        try {
+
+            ev.prenota();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());;
+        }
+
+
+        System.out.println(ev.getPostiPrenotati());
+
+
+        try {
+
+            ev.prenota();
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());;
+        }
 
 	}
 
